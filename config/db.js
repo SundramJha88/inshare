@@ -1,26 +1,45 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-function connectDB() {
-  // Database connection 🥳
-  mongoose.connect(process.env.MONGO_CONNECTION_URL,{
-useNewUrlParser: true,
-useCreateIndex: true,
-useUnifiedTopology: true,
-useFindAndModify: true,
-  });
-  const connection = mongoose.connection;
-  connection
-    .once("open", () => {
-      console.log("Database connected 🥳🥳🥳🥳");
-    })
-    .catch((err) => {
-      console.log("Connection failed ☹️☹️☹️☹️");
-    });
-}
 
-// mIAY0a6u1ByJsWWZ
+const connectDB = async () => {
+  try {
+    const mongoInstance = await mongoose.connect(
+      `${process.env.MONGO_URI}`
+    );
+    console.log("MongoDB connected !! DB HOST: " + mongoInstance.connection.host);
+  } catch (err) {
+    console.error("MongoDB connection failed -->  " + err);
+    process.exit(1);
+  }
+};
 
-module.exports = connectDB;
+
+module.exports = connectDB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
