@@ -4,7 +4,7 @@ InShare is a simple file-sharing website that allows users to upload files and g
 
 ## Features
 
-- Upload files of up to 100MB in size.
+- Upload files of up to 2GB in size.
 - Generate unique download links for each uploaded file.
 - Share links with others via email, messaging apps, or social media.
 - Links expire automatically after 24 hours for security and privacy.
