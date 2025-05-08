@@ -18,7 +18,7 @@ const toast = document.querySelector(".toast");
 const baseURL = "https://inshare-khfr.onrender.com";
 const uploadURL = `${baseURL}/api/files`;
 const emailURL = `${baseURL}/api/files/send`;
-const maxAllowedSize = 100 * 1024 * 1024; //100mb
+const maxAllowedSize = 2048 * 1024 * 1024; //2 GB
 
 browseBtn.addEventListener("click", () => {
   fileInput.click();

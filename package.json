@@ -4,15 +4,21 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start " : "node server.js",
+    "start ": "node server.js",
     "dev": "nodemon server",
-    "serve": "node server"
+    "serve": "node server",
+    "start": "node server.js"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "ejs": "^3.1.5",
+    "ejs": "^3.1.10",
     "express": "^4.17.1",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^5.10.0",
     "multer": "^1.4.2",
     "nodemailer": "^6.4.11",
@@ -21,10 +27,18 @@
   "devDependencies": {
     "nodemon": "^2.0.4"
   },
-  "nodemonConfig":{
-    "ext" : "json,ejs,html,css,env,mjs,cjs" 
-  }
-  
-  
-
+  "nodemonConfig": {
+    "ext": "json,ejs,html,css,env,mjs,cjs"
+  },
+  "description": "InShare is a simple file-sharing website that allows users to upload files and generate shareable links for easy sharing with others.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SundramJha88/inshare.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/SundramJha88/inshare/issues"
+  },
+  "homepage": "https://github.com/SundramJha88/inshare#readme"
 }
