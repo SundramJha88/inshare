@@ -5,6 +5,12 @@
   --container-width: 500px;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: system-ui;
   background: var(--main-bg-color);
@@ -26,7 +32,13 @@ body {
   background-size: contain;
 }
 
-body,
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 .upload-container,
 .drop-zone {
   display: flex;

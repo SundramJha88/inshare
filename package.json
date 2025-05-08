@@ -27,9 +27,6 @@
   "devDependencies": {
     "nodemon": "^2.0.4"
   },
-  "nodemonConfig": {
-    "ext": "json,ejs,html,css,env,mjs,cjs"
-  },
   "description": "InShare is a simple file-sharing website that allows users to upload files and generate shareable links for easy sharing with others.",
   "repository": {
     "type": "git",

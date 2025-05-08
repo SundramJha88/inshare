@@ -7,6 +7,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const flash = require("connect-flash");
+const jwt = require('jsonwebtoken');
+
 // Cors
 const corsOptions = {
   origin: process.env.ALLOWED_CLIENTS,
@@ -40,13 +42,30 @@ app.use(flash());
 app.set("view engine", "ejs");
 
 // Routes
+app.use((req, res, next) => {
+  const token = req.cookies.token;
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = decoded;
+    } catch (err) {
+      res.clearCookie('token');
+    }
+  }
+  next();
+});
+
+// Routes को इससे पहले रखें
 app.use("/api/files", require("./routes/files"));
 app.use("/files", require("./routes/show"));
 app.use("/files/download", require("./routes/download"));
 app.use('/', require('./routes/signup'));
 app.use('/', require('./routes/login'));
 
-app.get("/",(req, res) => {
+app.get("/", (req, res) => {
+  res.render("home");
+});
+app.get("/share", (req, res) => {
   res.render("index");
 });
 

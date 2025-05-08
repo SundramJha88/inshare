@@ -7,28 +7,29 @@ const signin = async (req,res,next) =>{
     const { usernameOrEmail, password } = req.body;
 
     const fetchUser = await User.findOne({
-      $or: [{ email: usernameOrEmail }, { username: usernameOrEmail }],
+      $or: [{ email: usernameOrEmail.toLowerCase() }, { username: usernameOrEmail.toLowerCase() }],
     });
 
     if (!fetchUser) {
-      req.flash("error", "Invalid credentials");
-      return res.redirect("/signin");
+      req.flash("error", "Wrong credentials");
+      return res.redirect("/login");  // /signin से /login में बदला
     }
 
     const isMatch = await bcrypt.compare(password, fetchUser.password);
 
     if (!isMatch) {
-      req.flash("error", "Invalid credentials");
-      return res.redirect("/signin");
+      req.flash("error", "Wrong credentials");
+      return res.redirect("/login");  // /signin से /login में बदला
     }
-    createToken({ username: fetchUser.username }, '0.5h', res); 
+    
+    createToken({ username: fetchUser.username, userId: fetchUser._id }, '24h', res);  // टोकन एक्सपायरी बढ़ाई
 
-    req.flash("success", "Login successful!");
-    return res.redirect("/");
+    req.flash("success", "Login Successfull");
+    return res.redirect("/share");
   } catch (err) {
-    req.flash("error", "An error occurred during login.");
+    req.flash("error", "Unable to login at the moment");
     console.log(err);
-    return res.redirect("/signin");
+    return res.redirect("/login");  // /signin से /login में बदला
   }
 }
 

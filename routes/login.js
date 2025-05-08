@@ -10,4 +10,10 @@ router.get("/login", (req, res) => {
 
 router.post("/login", signin);
 
-module.exports = router; 
+router.get("/logout", (req, res) => {
+  res.clearCookie('token');
+  req.flash("success", "Logout Successfull");
+  res.redirect("/");
+});
+
+module.exports = router;

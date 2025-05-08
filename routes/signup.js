@@ -67,7 +67,7 @@ router.post("/signup", async (req, res) => {
     createToken({ username: username.toLowerCase() }, "0.5h", res);
 
     req.flash("signupSuccess", "Signup successful! Welcome to InShare");
-    res.redirect("/");
+    res.redirect("/share");
   } catch (err) {
     console.error("Unable to signup", err);
     req.flash(
