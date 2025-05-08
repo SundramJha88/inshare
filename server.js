@@ -55,8 +55,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes को इससे पहले रखें
-app.use("/api/files", require("./routes/files"));
+app.use("/api/files",require('./auth/isLogin.js'), require("./routes/files"));
 app.use("/files", require("./routes/show"));
 app.use("/files/download", require("./routes/download"));
 app.use('/', require('./routes/signup'));
@@ -65,7 +64,7 @@ app.use('/', require('./routes/login'));
 app.get("/", (req, res) => {
   res.render("home");
 });
-app.get("/share", (req, res) => {
+app.get("/share", require('./auth/isLogin.js'), (req, res) => {
   res.render("index");
 });
 

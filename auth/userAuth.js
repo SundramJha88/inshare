@@ -12,24 +12,24 @@ const signin = async (req,res,next) =>{
 
     if (!fetchUser) {
       req.flash("error", "Wrong credentials");
-      return res.redirect("/login");  // /signin से /login में बदला
+      return res.redirect("/login");  
     }
 
     const isMatch = await bcrypt.compare(password, fetchUser.password);
 
     if (!isMatch) {
       req.flash("error", "Wrong credentials");
-      return res.redirect("/login");  // /signin से /login में बदला
+      return res.redirect("/login");  
     }
     
-    createToken({ username: fetchUser.username, userId: fetchUser._id }, '24h', res);  // टोकन एक्सपायरी बढ़ाई
+    createToken({ username: fetchUser.username, userId: fetchUser._id }, '24h', res);  
 
     req.flash("success", "Login Successfull");
     return res.redirect("/share");
   } catch (err) {
     req.flash("error", "Unable to login at the moment");
     console.log(err);
-    return res.redirect("/login");  // /signin से /login में बदला
+    return res.redirect("/login");
   }
 }
 

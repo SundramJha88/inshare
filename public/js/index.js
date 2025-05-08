@@ -15,7 +15,8 @@ const emailForm = document.querySelector("#emailForm");
 
 const toast = document.querySelector(".toast");
 
-const baseURL = "https://inshare-khfr.onrender.com";
+// const baseURL = "https://inshare-khfr.onrender.com";
+const baseURL = "http://localhost:3000";
 const uploadURL = `${baseURL}/api/files`;
 const emailURL = `${baseURL}/api/files/send`;
 const maxAllowedSize = 2048 * 1024 * 1024; //2 GB

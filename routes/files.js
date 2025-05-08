@@ -9,7 +9,7 @@ let storage = multer.diskStorage({
     filename: (req, file, cb) => {
         const uniqueName = `${Date.now()}-${Math.round(Math.random() * 1E9)}${path.extname(file.originalname)}`;
               cb(null, uniqueName)
-    } ,
+    },
 });
 
 let upload = multer({ storage, limits:{ fileSize: 2048*1024 * 1024 }, }).single('myfile'); // 2GB
@@ -26,6 +26,7 @@ router.post('/', (req, res) => {
             size: req.file.size
         });
         const response = await file.save();
+        console.log(process.env.APP_BASE_URL);
         res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` });
       });
 });
