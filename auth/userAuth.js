@@ -24,7 +24,7 @@ const signin = async (req,res,next) =>{
     createToken({ username: fetchUser.username }, '0.5h', res); 
 
     req.flash("success", "Login successful!");
-    return res.redirect("/submitresult");
+    return res.redirect("/");
   } catch (err) {
     req.flash("error", "An error occurred during login.");
     console.log(err);
