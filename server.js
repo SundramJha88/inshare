@@ -55,17 +55,24 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/files",require('./auth/isLogin.js'), require("./routes/files"));
+
+app.use((req, res, next) => {
+  res.locals.isLoggedIn = Boolean(req.cookies.token); 
+  next();
+});
+
+
+app.use("/api/files", require("./routes/files"));
 app.use("/files", require("./routes/show"));
 app.use("/files/download", require("./routes/download"));
 app.use('/', require('./routes/signup'));
 app.use('/', require('./routes/login'));
 
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", {success: req.flash("success"), error: req.flash("error")});
 });
 app.get("/share", require('./auth/isLogin.js'), (req, res) => {
-  res.render("index");
+  res.render("index", { success: req.flash("success"), error: req.flash("error") });
 });
 
 app.listen(PORT, console.log(`Listening on port ${PORT}.`));

@@ -36,50 +36,6 @@
         <p>Already have an account? <a href="/login">Login here</a></p>
     </div>
 
-    <div class="toast"></div>
-
-    <!-- <script>
-        const baseURL = "https://inshare-khfr.onrender.com";
-        const signupURL = `${baseURL}/signup`;
-        const toast = document.querySelector(".toast");
-
-        document.querySelector("#signupForm").addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            const formData = {
-                name: e.target.elements["name"].value,
-                email: e.target.elements["email"].value,
-                password: e.target.elements["password"].value,
-            };
-
-            fetch(signupURL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.success) {
-                    showToast("Signup successful! Redirecting...");
-                    setTimeout(() => {
-                        window.location.href = "login.html";
-                    }, 2000);
-                } else {
-                    showToast(data.message || "Signup failed. Try again.");
-                }
-            })
-            .catch(() => {
-                showToast("Error during signup. Please try again.");
-            });
-        });
-
-        function showToast(msg) {
-            toast.innerText = msg;
-            toast.classList.add("show");
-            setTimeout(() => {
-                toast.classList.remove("show");
-            }, 2000);
-        }
-    </script> -->
+    <div class="signup-toast"></div>
 </body>
 </html>

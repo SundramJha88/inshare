@@ -15,8 +15,8 @@ const emailForm = document.querySelector("#emailForm");
 
 const toast = document.querySelector(".toast");
 
-// const baseURL = "https://inshare-khfr.onrender.com";
-const baseURL = "http://localhost:3000";
+const baseURL = "https://inshare-khfr.onrender.com";
+// const baseURL = "http://localhost:3000";
 const uploadURL = `${baseURL}/api/files`;
 const emailURL = `${baseURL}/api/files/send`;
 const maxAllowedSize = 2048 * 1024 * 1024; //2 GB
@@ -36,7 +36,7 @@ dropZone.addEventListener("drop", (e) => {
       fileInput.files = files;
       uploadFile();
     } else {
-      showToast("Max file size is 100MB");
+      showToast("Max file size is 2GB");
     }
   } else if (files.length > 1) {
     showToast("You can't upload multiple files");
@@ -60,7 +60,7 @@ dropZone.addEventListener("dragleave", (e) => {
 // file input change and uploader
 fileInput.addEventListener("change", () => {
   if (fileInput.files[0].size > maxAllowedSize) {
-    showToast("Max file size is 100MB");
+    showToast("Max file size is 2GB");
     fileInput.value = ""; // reset the input
     return;
   }

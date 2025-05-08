@@ -24,7 +24,8 @@ const signin = async (req,res,next) =>{
     
     createToken({ username: fetchUser.username, userId: fetchUser._id }, '24h', res);  
 
-    req.flash("success", "Login Successfull");
+    // req.flash("success", "Login Successfull");
+
     return res.redirect("/share");
   } catch (err) {
     req.flash("error", "Unable to login at the moment");
