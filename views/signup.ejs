@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - INSHARE </title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/signup.css">
+
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <div>
+        <h2>Sign Up</h2>
+        
+        <% if (error.length>0) { %>
+            <div class="alert alert-error">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <% if (success.length>0) { %>
+            <div class="alert alert-success">
+                <%= success %>
+            </div>
+        <% } %>
+
+        <form id="signupForm" action="/signup" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required />
+            <input type="text" name="username" placeholder="Username (letters, numbers, underscore)" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Password (min 6 characters)" required />
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="/login">Login here</a></p>
+    </div>
+
+    <div class="signup-toast"></div>
+</body>
+</html>

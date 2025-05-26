@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>InShare - Secure File Sharing</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <%- include('partials/navbar') %>
+
+    <% if (success.length>0) { %>
+      <div class="alert alert-success">
+        <%= success %>
+      </div>
+    <% } %>
+
+        <section class="upload-container" style="padding: 40px; margin-top: 50px;">
+          <div style="text-align: center;">
+            <h1 style="color: #0288d1; font-size: 2.5rem; margin-bottom: 10px;">Welcome to InShare</h1>
+            <p style="color: #607d8b; font-size: 1.2rem; max-width: 500px; margin: auto;">
+              Share your files instantly and securely. No login required. Just drag, drop, and send your files with a
+              link.
+            </p>
+            <a href="/share"
+              style="display: inline-block; margin-top: 30px; background: var(--light-blue); color: white; padding: 10px 25px; border-radius: 5px; text-decoration: none; font-size: 1.1rem;">
+              Start Uploading
+            </a>
+          </div>
+        </section>
+
+        <!-- <div class="image-vector"></div> -->
+</body>
+
+</html>
